@@ -60,7 +60,8 @@ public class Router {
 			String currentURL = mWebView.getUrl();
 			String cacheUrl = getCacheUrl(context);
 			
-			if((currentURL == null || currentURL.equals("")) && (url.equals("") || url == null)){				
+			if((currentURL == null || currentURL.equals("")) && (url.equals("") || url == null)){	
+				settingWebView(context, "file:///android_asset/init.html");
 				if(cacheUrl != null && cacheUrl != ""){
 					settingWebView(context, cacheUrl);
 					if(BaseApplication.mDomain == null || BaseApplication.mDomain == ""){
@@ -120,7 +121,7 @@ public class Router {
 		 
 		 WebSettings webSettings = mWebView.getSettings();
 		 webSettings.setJavaScriptEnabled(true);
-		
+		 
 		 webSettings.setDomStorageEnabled(true);
 		 webSettings.setSaveFormData(true);
 		 webSettings.setDatabaseEnabled(true);

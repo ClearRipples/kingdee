@@ -257,10 +257,9 @@ public class MainActivity extends Activity {
 								@Override
 								public void onClick(DialogInterface dialog,
 										int which) {
-
+									BaseApplication.mShowUpdate = false;
 								}
 							}).create().show();
-			BaseApplication.mShowUpdate = false;
 		}
 
 		if (BaseApplication.mVersionCode >= mLatestVersionCode && isManual) {
