@@ -1,0 +1,9 @@
+E:\Source code\Publish\Kingdee.K3.SCM.PDABinding\Kingdee.K3.SCM.PDABinding\bin\Debug\Kingdee.K3.SCM.PDABinding.exe.config
+E:\Source code\Publish\Kingdee.K3.SCM.PDABinding\Kingdee.K3.SCM.PDABinding\bin\Debug\Kingdee.K3.SCM.PDABinding.exe
+E:\Source code\Publish\Kingdee.K3.SCM.PDABinding\Kingdee.K3.SCM.PDABinding\bin\Debug\Kingdee.K3.SCM.PDABinding.pdb
+E:\Source code\Publish\Kingdee.K3.SCM.PDABinding\Kingdee.K3.SCM.PDABinding\obj\Debug\Kingdee.K3.SCM.PDABinding.License.resources
+E:\Source code\Publish\Kingdee.K3.SCM.PDABinding\Kingdee.K3.SCM.PDABinding\obj\Debug\Kingdee.K3.SCM.PDABinding.Properties.Resources.resources
+E:\Source code\Publish\Kingdee.K3.SCM.PDABinding\Kingdee.K3.SCM.PDABinding\obj\Debug\Kingdee.K3.SCM.PDABinding.csproj.GenerateResource.Cache
+E:\Source code\Publish\Kingdee.K3.SCM.PDABinding\Kingdee.K3.SCM.PDABinding\obj\Debug\Kingdee.K3.SCM.PDABinding.exe
+E:\Source code\Publish\Kingdee.K3.SCM.PDABinding\Kingdee.K3.SCM.PDABinding\obj\Debug\Kingdee.K3.SCM.PDABinding.pdb
+E:\Source code\Publish\Kingdee.K3.SCM.PDABinding\Kingdee.K3.SCM.PDABinding\obj\Debug\Kingdee.K3.SCM.PDABinding.csprojResolveAssemblyReference.cache

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_id">k3</string>
+    <string name="app_name">K/3 WISE 二維碼</string>
+    <string name="app_icon_tip">app_icon</string>
+    <string name="check_license_title">檢查 License</string>
+    <string name="check_license_message">正在獲取 License 信息</string>
+    <string name="check_license_exception">未檢測到 K/3 二維碼的許可文件</string>
+    <string name="check_license_confirm">確定</string>
+    <string name="app_scanservice_initfail">掃描服務啟用失敗</string>
+
+    <string name="app_back">返回</string>
+    <string name="app_loading">請稍後，正在拉取數據....</string>
+    <string name="app_loading_none">未找到數據.</string>
+    <string name="app_loading_fail">數據加載失敗，請稍後再試.</string>
+    <string name="app_loading_fail_web">網頁加載失敗，請稍後再試.</string>
+    <string name="app_refresh">刷新</string>
+    <string name="app_share">分享</string>
+    <string name="app_exit_title">退出</string>
+    <string name="app_exit_message">再按一次後退鍵退出程序</string>
+    <string name="app_upgrade_confirm">確定</string>
+    <string name="app_upgrade_cancel">取消</string>
+    <string name="check_new_version">發現新版本，確定更新嗎？</string>
+    <string name="check_new_version_title">檢查新版本</string>
+    <string name="check_new_version_message">正在獲取新版本信息 ....</string>
+    <string name="check_new_version_no_network">未找到網絡連接，請設置后重試!</string>
+    <string name="check_new_version_null">未找到新版本信息，請稍後再試!</string>
+    <string name="check_new_version_exception">獲取新版本信息出錯，請稍後再試!</string>
+    <string name="check_new_version_latest">已經是最新版本!</string>
+    <string name="app_upgrade_download_start">開始下載</string>
+    <string name="app_upgrade_download_sucess">新版本下載成功，開始安裝.</string>
+    <string name="app_upgrade_download_fail">新版本下載失敗，請稍後再試.</string>
+    <string name="setting_about_title">關於</string>
+    <string name="setting_about_subject">K/3 WISE 二維碼</string>
+    <string name="setting_about_description">K/3 WISE 二維碼!</string>
+    <string name="setting_about_copyright_1">項目 版權所有</string>
+    <string name="setting_about_copyright_2">Copyright © 2014~2015 K/3 WISE 二維碼運營團隊.</string>
+    <string name="setting_about_copyright_3">All Rights Reserved.</string>
+
+    <string name="title_activity_main">K/3 WISE 二維碼</string>
+
+</resources>

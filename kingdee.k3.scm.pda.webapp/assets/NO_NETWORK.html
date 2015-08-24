@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- <html manifest="qrcode.manifest"> -->
+<HTML>
+    <head>
+        <title data-lang-text="title">二维码应用</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <meta name="format-detection" content="telephone=no,address=no"/>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <meta name="x5-fullscreen" content="true"/>
+        <link rel="apple-touch-icon" rel="apple-touch-icon-precomposed" href="img/ios_logo.png" />
+
+        <link href="css/YtInG.css" rel="stylesheet" />
+        <link href="css/effect/parallax.css" rel="stylesheet" />
+        <link href="css/effect/parallax-animation.css" rel="stylesheet" />
+
+        <style>
+        section[data-id="1"] {
+            background-color: #7BCDF7;
+        }
+        section[data-id="2"] {
+            background-color: #40d47e;
+        }
+        section[data-id="3"] {
+            background-color: #ff8c81;
+        }
+        section[data-id="4"] {
+            background-color: #3498db;
+        }
+
+        .title{
+            width: 120px;
+            height: 50px;
+            position: absolute;
+            left: 100px; top: 56px;
+        }
+        .title h1{
+            color: rgba(255,255,255,1);
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 50px;
+        }
+        .box1 {
+            width: 100px;
+            height: 200px;
+            background-color: #ccffff;
+            position: absolute;
+            left: 60px; top: 126px;
+        }
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: #99ccff;
+            position: absolute;
+            left: 60px; top: 226px;
+        }
+        .box3 {
+            width: 100px;
+            height: 100px;
+            background-color: #3399cc;
+            position: absolute;
+            left: 160px; top: 126px;
+        }
+        .box4 {
+            width: 50px;
+            height: 50px;
+            background-color: #336699;
+            position: absolute;
+            left: 185px; top: 151px;
+        }
+
+        .box5 {
+            width: 50px;
+            height: 50px;
+            background-color: #34495e;
+            position: absolute;
+            left: 85px; top: 151px;
+        }
+        .box6 {
+            width: 50px;
+            height: 50px;
+            background-color: #e74c3c;
+            position: absolute;
+            left: 85px; top: 251px;
+        }
+        .box7 {
+            width: 100px;
+            height: 100px;
+            background-color: #336699;
+            position: absolute;
+            left: 160px; top: 226px;
+        }
+        .footer{
+            height: 50px;
+            color: rgba(255,255,255,.9);
+            position: absolute;
+            left: 0px; bottom: 0px;
+        }
+
+        .ui-notice>i:before,.ui-notice p{
+           color: #fff; 
+        }
+
+        </style>
+    </head>
+    <body ontouchstart>
+        <div class="ui-page" id="first-sight">
+            <div class="wrapper">
+                <div class="pages">
+                    <!-- 第一屏 -->
+                    <section class="page">
+                        
+                        <section class="ui-notice">
+                        <div class="title" data-animation="fadeInToBottom" data-timing-function="ease-in">
+                            <h1>K/3 WISE 二维码</h1>
+                        </div>             
+                            <i></i>
+                            <p>请检查网络</p>
+                        </section>
+                        <div class="footer ui-flex ui-flex-pack-end" data-animation="fadeInToBottom" data-delay="600" data-duration="1000">
+                            <ul class="ui-whitespace">
+                                <li><p class="ui-txt-tips">K/3 WISE 二维码运营团队</p></li>
+                                <li><p class="ui-txt-tips">v 2.0.0</p></li>
+                            </ul>
+                        </div>
+                    </section>            
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="lib/zepto.min.js"></script>
+        <script type="text/javascript" src="js/effect/parallax.js"></script>
+        <script type="text/javascript">
+        $('.pages').parallax();
+        </script>
+    </body>
+    <html>
