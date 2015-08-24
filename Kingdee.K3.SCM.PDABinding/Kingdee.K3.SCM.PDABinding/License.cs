@@ -36,16 +36,17 @@ namespace Kingdee.K3.SCM.PDABinding
                     SaveFileDialog dialog = new SaveFileDialog();
                     //dialog.Filter = @"License|*.license";
                     dialog.FilterIndex = 0;
-                    //dialog.FileName = txt_sn.Text;
-                    dialog.FileName = Kingdee.K3.SCM.PDABinding.Code.StringUtils.replaceUrlWithPlus(txt_sn.Text + ".license");
+                    string sn = txt_sn.Text.Replace(" ", "");
+                    string miei = txt_miei.Text.Replace(" ", "");
+                    dialog.FileName = Kingdee.K3.SCM.PDABinding.Code.StringUtils.replaceUrlWithPlus(sn + ".license");
 
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
                         StringBuilder strMessage = new StringBuilder();
 
-                        Code.SoftReg register = new Code.SoftReg();
+                        Code.SoftReg register = new Code.SoftReg(sn, miei);
 
-                        strMessage.Append(register.CreateLicenseFile(txt_sn.Text, txt_miei.Text));
+                        strMessage.Append(register.CreateLicenseFile());
                         if (!dialog.CheckPathExists)
                         {
                             Directory.CreateDirectory(dialog.FileName);
@@ -64,55 +65,38 @@ namespace Kingdee.K3.SCM.PDABinding
             }
         }
 
-        private void txt_sn_TextChanged(object sender, EventArgs e)
+        private string formatString(string str)
         {
-            txt_sn.Text = ChangeToUpper(txt_sn.Text);
+            string finalStr = "";
+            str = str.Replace(" ", "");
+            char[] arr = str.ToCharArray();
+            for (int count = 0; count <=arr.Length - 1; count++)
+            {
+                finalStr += arr[count];
+                if (count % 4 == 0 && count != 0)
+                {
+                    finalStr += " ";
+                }
+            }
+            return finalStr.ToUpper();
+        }
+
+        private void txt_sn_KeyUp(object sender, KeyEventArgs e)
+        {
+            txt_sn.Text = formatString(txt_sn.Text);
             if (txt_sn.Text.Length > 0)
             {
                 txt_sn.SelectionStart = txt_sn.Text.Length;
             }
         }
 
-        private void txt_miei_TextChanged(object sender, EventArgs e)
+        private void txt_miei_KeyUp(object sender, KeyEventArgs e)
         {
-            txt_miei.Text = ChangeToUpper(txt_miei.Text);
+            txt_miei.Text = formatString(txt_miei.Text);
             if (txt_miei.Text.Length > 0)
             {
                 txt_miei.SelectionStart = txt_miei.Text.Length;
             }
-        }
-
-        private string ChangeToUpper(string str)
-        {
-            string finalStr = "";
-            if (str.Length > 0)
-            {
-                // 將 TextBox1.Text 的中文字刪除
-                //for (int i = str.Length - 1; i >= 0; i--)
-                //{
-                    //if (!(System.Text.RegularExpressions.Regex.IsMatch(str.Substring(i, 1), @"^[A-Za-z0-9]+$")))
-                    //{
-                    //    str = str.Remove(i, 1);
-                        
-                    //}
-
-
-                //}
-                str = str.Replace(" ", "");
-
-                char[] arr = str.ToCharArray();
-                for (int count = arr.Length - 1; count >= 0; count--)
-                {
-                    finalStr += arr[count];
-                    if (count % 4 == 0 && count != 0)
-                    {
-                        finalStr += " ";
-                    }
-                }
-            }
-
-
-            return finalStr.ToUpper();
         }
     }
 }

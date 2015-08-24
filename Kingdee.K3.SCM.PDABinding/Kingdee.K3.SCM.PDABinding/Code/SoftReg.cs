@@ -6,11 +6,21 @@ namespace Kingdee.K3.SCM.PDABinding.Code
 {
     class SoftReg
     {
-        private static int len = 20;
+        //private static int len = 20;
         public int[] intCode = new int[127];    //存储密钥
-        public char[] charCode = new char[len];  //存储ASCII码
-        public int[] intNumber = new int[len];   //存储ASCII码值
+        //public char[] charCode = new char[len];  //存储ASCII码
+        //public int[] intNumber = new int[len];   //存储ASCII码值
 
+        private int len { get; set; }
+        private string SN { get; set; }
+        private string MIEI { get; set; }
+
+        public SoftReg(string sn, string miei)
+        {
+            this.SN = sn;
+            this.MIEI = miei;
+            this.len = sn.Length + miei.Length;
+        }
 
         //初始化密钥
         public void SetIntCode()
@@ -21,14 +31,18 @@ namespace Kingdee.K3.SCM.PDABinding.Code
             }
         }
 
+
         ///<summary>
         /// 生成注册码
         ///</summary>
         ///<returns></returns>
-        private string GetRNum(string sn, string miei)
+        private string GetRNum()
         {
+            char[] charCode = new char[len];  //存储ASCII码
+            int[] intNumber = new int[len];   //存储ASCII码值
+
             SetIntCode();
-            string strMNum = sn + miei;
+            string strMNum = SN + MIEI;
             strMNum = strMNum.Substring(0, len-1);
 
             for (int i = 1; i < charCode.Length; i++)   //存储机器码
@@ -60,9 +74,9 @@ namespace Kingdee.K3.SCM.PDABinding.Code
             return strAsciiName;
         }
 
-        public string CreateLicenseFile(string sn, string miei)
+        public string CreateLicenseFile()
         {
-            string secCode = UserMd5(GetRNum(sn, miei));
+            string secCode = UserMd5(GetRNum());
 
             //得到数据进行加密处理
 

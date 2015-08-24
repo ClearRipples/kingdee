@@ -71,8 +71,7 @@
             this.txt_sn.Name = "txt_sn";
             this.txt_sn.Size = new System.Drawing.Size(323, 21);
             this.txt_sn.TabIndex = 3;
-            this.txt_sn.TextChanged += new System.EventHandler(this.txt_sn_TextChanged);
-
+            this.txt_sn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_sn_KeyUp);
             // 
             // txt_miei
             // 
@@ -80,7 +79,7 @@
             this.txt_miei.Name = "txt_miei";
             this.txt_miei.Size = new System.Drawing.Size(323, 21);
             this.txt_miei.TabIndex = 4;
-            this.txt_miei.TextChanged += new System.EventHandler(this.txt_miei_TextChanged);
+            this.txt_miei.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_miei_KeyUp);
             // 
             // license_open
             // 
