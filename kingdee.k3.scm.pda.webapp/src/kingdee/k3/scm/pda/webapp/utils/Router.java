@@ -67,6 +67,8 @@ public class Router {
 						BaseApplication.mDomain = getDomain(cacheUrl);	
 						initEnv(context);
 					}
+					
+					CookieHelper.synCookies(context, cacheUrl, "mi", getMachineInfo(context));
 				}else{
 					settingWebView(context, "file:///android_asset/init.html");
 				}				
@@ -87,9 +89,10 @@ public class Router {
 						initEnv(context);
 					}
 				}
-			}
+				
+				CookieHelper.synCookies(context, url, "mi", getMachineInfo(context));
+			}			
 		}
-		CookieHelper.synCookies(context, mWebView.getUrl(), "mi", getMachineInfo(context));
 		
 	}
 	

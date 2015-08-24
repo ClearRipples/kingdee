@@ -104,9 +104,9 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		Intent intent=new Intent("df.scanservice.toapp");
-		this.sendBroadcast(intent);
 		if(ModelConst.PWS470.equals(BaseApplication.mMachineModel.toUpperCase())){
+			Intent intent=new Intent("df.scanservice.toapp");
+			this.sendBroadcast(intent);
 			scanFactory.createPWS470ScanService().registerBroadCast(getApplicationContext(), mWebView, mWebViewProgressBar);
 		}
 	}
@@ -125,7 +125,6 @@ public class MainActivity extends Activity {
 			
 			if(BaseApplication.hasLicense){
 				if(ModelConst.HANDHELD1.equals(BaseApplication.mMachineModel.toUpperCase())){
-					//scanThread.scan();
 					scanFactory.createHandHeld1ScanService().scan();
 				}
 			}else{
