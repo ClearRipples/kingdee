@@ -3,11 +3,12 @@ package cn.pda.scan;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
 import cn.pda.serialport.SerialPort;
 
 public class ScanThread extends Thread {
@@ -79,7 +80,27 @@ public class ScanThread extends Thread {
 		handler.sendMessage(msg);
 	}
 	
+	private Timer mTimer = null;
 	public void scan(){
+
+		if(mTimer != null){
+			mTimer.cancel();
+			mTimer = null;
+		}
+		mTimer = new Timer();
+		mTimer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				mSerialPort.scaner_trigoff();
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}, 5000);
 		if(mSerialPort.scaner_trig_stat() == true){
 			mSerialPort.scaner_trigoff();
 			try {
@@ -91,6 +112,18 @@ public class ScanThread extends Thread {
 		}
 		mSerialPort.scaner_trigon();
 	}
+//	public void scan(){
+//		if(mSerialPort.scaner_trig_stat() == true){
+//			mSerialPort.scaner_trigoff();
+//			try {
+//				Thread.sleep(50);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		mSerialPort.scaner_trigon();
+//	}
 	
 	public void close(){
 		if(mSerialPort != null){

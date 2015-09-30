@@ -26,6 +26,7 @@ import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
+import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -36,8 +37,6 @@ import kingdee.k3.scm.pda.webapp.base.BaseApplication;
 import kingdee.k3.scm.pda.webapp.cache.ConfigCache;
 import kingdee.k3.scm.pda.webapp.db.BaseSQLiteHelper;
 import kingdee.k3.scm.pda.webapp.db.UrlSQLLite;
-import kingdee.k3.scm.pda.webapp.sync.http.AsyncHttpClient;
-import kingdee.k3.scm.pda.webapp.sync.http.AsyncHttpResponseHandler;
 
 /*
  * author: hongbo_liang @ kingdee.com
@@ -68,8 +67,7 @@ public class Router {
 						BaseApplication.mDomain = getDomain(cacheUrl);	
 						initEnv(context);
 					}
-					
-					CookieHelper.synCookies(context, cacheUrl, "mi", getMachineInfo(context));
+				
 				}else{
 					settingWebView(context, "file:///android_asset/init.html");
 				}				
@@ -91,7 +89,7 @@ public class Router {
 					}
 				}
 				
-				CookieHelper.synCookies(context, url, "mi", getMachineInfo(context));
+				//CookieHelper.synCookies(context, url, "mi", getMachineInfo(context));
 			}			
 		}
 		
@@ -116,12 +114,15 @@ public class Router {
 	
 	@SuppressLint("SetJavaScriptEnabled")
 	private static void settingWebView(final Context context, String url){
+		
+		mWebView.loadUrl(url);
+		
     	//hongbo_liang 启用客户端的Cookie
 		CookieManager.getInstance().setAcceptCookie(true);		
 		 
 		 WebSettings webSettings = mWebView.getSettings();
 		 webSettings.setJavaScriptEnabled(true);
-		 
+
 		 webSettings.setDomStorageEnabled(true);
 		 webSettings.setSaveFormData(true);
 		 webSettings.setDatabaseEnabled(true);
@@ -161,6 +162,7 @@ public class Router {
 			
 			@Override
 			public void onPageStarted(WebView view, String url, Bitmap favicon) {								
+				CookieHelper.synCookies(context, url, "mi", getMachineInfo(context));
 				super.onPageStarted(view, url, favicon);
 			}
 			
@@ -198,7 +200,8 @@ public class Router {
 		});
 		 		
 		//mWebView.loadUrl("about:blank");
-		mWebView.loadUrl(url);
+		
+		//mWebView.reload();
     }
 	
 	//获取链接的返回状态
@@ -299,23 +302,23 @@ public class Router {
   	private static String getMachineInfo(Context context){
   		TelephonyManager tm = (TelephonyManager)context.getSystemService( Context.TELEPHONY_SERVICE);  
           StringBuilder sb = new StringBuilder();          
-          sb.append("DeviceId = " + tm.getDeviceId());  
-          sb.append("&DeviceSoftwareVersion = " + tm.getDeviceSoftwareVersion());  
-          sb.append("&Line1Number = " + tm.getLine1Number());  
-          sb.append("&NetworkCountryIso = " + tm.getNetworkCountryIso());  
-          sb.append("&NetworkOperator = " + tm.getNetworkOperator());  
-          sb.append("&NetworkOperatorName = " + tm.getNetworkOperatorName());  
-          sb.append("&NetworkType = " + tm.getNetworkType());  
-          sb.append("&PhoneType = " + tm.getPhoneType());  
-          sb.append("&SimCountryIso = " + tm.getSimCountryIso());  
-          sb.append("&SimOperator = " + tm.getSimOperator());  
-          sb.append("&SimOperatorName = " + tm.getSimOperatorName());  
-          sb.append("&SimSerialNumber = " + tm.getSimSerialNumber());  
-          sb.append("&SimState = " + tm.getSimState());  
-          sb.append("&SubscriberId(IMSI) = " + tm.getSubscriberId());  
-          sb.append("&VoiceMailNumber = " + tm.getVoiceMailNumber());
-          sb.append("&MachineName = " + Build.MODEL);
-          sb.append("&IP = " + getClientIP(context));
+          sb.append("{\"DeviceId\" : \"" + tm.getDeviceId()+"\"");  
+          sb.append(",\"DeviceSoftwareVersion\" : \"" + tm.getDeviceSoftwareVersion()+"\"");  
+          sb.append(",\"Line1Number\" : \"" + tm.getLine1Number()+"\"");  
+          sb.append(",\"NetworkCountryIso\" : \"" + tm.getNetworkCountryIso()+"\"");  
+          sb.append(",\"NetworkOperator\" : \"" + tm.getNetworkOperator()+"\"");  
+          sb.append(",\"NetworkOperatorName\" : \"" + tm.getNetworkOperatorName()+"\"");  
+          sb.append(",\"NetworkType\" : \"" + tm.getNetworkType()+"\"");  
+          sb.append(",\"PhoneType\" : \"" + tm.getPhoneType()+"\"");  
+          sb.append(",\"SimCountryIso\" : \"" + tm.getSimCountryIso()+"\"");  
+          sb.append(",\"SimOperator\" : \"" + tm.getSimOperator()+"\"");  
+          sb.append(",\"SimOperatorName\" : \"" + tm.getSimOperatorName()+"\"");  
+          sb.append(",\"SimSerialNumber\" : \"" + tm.getSimSerialNumber()+"\"");  
+          sb.append(",\"SimState\" : \"" + tm.getSimState()+"\"");  
+          sb.append(",\"SubscriberId(IMSI)\" : \"" + tm.getSubscriberId()+"\"");  
+          sb.append(",\"VoiceMailNumber\" : \"" + tm.getVoiceMailNumber()+"\"");
+          sb.append(",\"MachineName\" : \"" + Build.MODEL+"\"");
+          sb.append(",\"IP\" : \"" + getClientIP(context)+"\"}");
           Log.e("info", sb.toString());   
           
           return sb.toString();

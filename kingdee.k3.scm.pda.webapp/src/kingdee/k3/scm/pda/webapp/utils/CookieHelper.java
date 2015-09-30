@@ -23,5 +23,7 @@ public class CookieHelper {
         CookieManager cookieManager = CookieManager.getInstance();  
         cookieManager.setCookie(url, key +"=" + msg); 
         CookieSyncManager.getInstance().sync();
+        
+        Log.i(TAG, "设备数据存入到 COOKIE");
 	}
 }

@@ -1,6 +1,7 @@
 package kingdee.k3.scm.pda.webapp.activity;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,6 +67,7 @@ public class MainActivity extends Activity {
 	 	this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 	 	    	WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);	
+		
 		//检测license
 		TelephonyManager telephonyManager = (TelephonyManager)MainActivity.this.getSystemService( Context.TELEPHONY_SERVICE);		
 		BaseApplication.checkLicense(telephonyManager.getDeviceId());
@@ -143,6 +145,9 @@ public class MainActivity extends Activity {
 		}
 		
 		if (keyCode == KeyEvent.KEYCODE_BACK) { 
+			if(scanTimer != null){
+				scanTimer.cancel();
+			}
             exit(); 
             return true; 
         } 
@@ -175,7 +180,8 @@ public class MainActivity extends Activity {
             this.finish();
         } 
     }    
-
+    
+    
 	//设置应用信息列表
 	private void setInfomationList() {
 		String cacheConfigString = ConfigCache
