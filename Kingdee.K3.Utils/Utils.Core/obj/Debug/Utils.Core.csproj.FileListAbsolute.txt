@@ -1,0 +1,7 @@
+E:\GitHub\kingdee\Kingdee.K3.Utils\Utils.Core\obj\Debug\Utils.Core.csprojResolveAssemblyReference.cache
+E:\GitHub\kingdee\Kingdee.K3.Utils\Utils.Core\obj\Debug\Utils.Core.R.resources
+E:\GitHub\kingdee\Kingdee.K3.Utils\Utils.Core\obj\Debug\Utils.Core.csproj.GenerateResource.Cache
+E:\GitHub\kingdee\Kingdee.K3.Utils\Utils.Core\bin\Debug\Utils.Core.dll
+E:\GitHub\kingdee\Kingdee.K3.Utils\Utils.Core\bin\Debug\Utils.Core.pdb
+E:\GitHub\kingdee\Kingdee.K3.Utils\Utils.Core\obj\Debug\Utils.Core.dll
+E:\GitHub\kingdee\Kingdee.K3.Utils\Utils.Core\obj\Debug\Utils.Core.pdb
